@@ -8,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.hackgtone.R;
 import com.hackgtone.model.Service;
@@ -18,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ServiceInfoActivity extends AppCompatActivity {
-    private final String[] times = {"6:00-6:15", "6:15-6:30", "6:30-6:45", "6:45-7:00"};
+    private final String[] times = {"6:00-6:15", "6:15-6:30", "6:30-6:45", "6:45-7:00", "8:15-8:30"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,14 @@ public class ServiceInfoActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, itemList);
         itemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         itemSpinner.setAdapter(itemAdapter);
+        String item = Facade.getCurrentService().getItem();
+        if (!item.equals("")) {
+            for (int i = 0; i < itemList.size(); i++) {
+                if (itemList.get(i).equals(item)) {
+                    itemSpinner.setSelection(i);
+                }
+            }
+        }
 
         final Spinner timeSpinner = (Spinner) findViewById(R.id.time_spinner);
         List<String> timeList = new ArrayList<>(Arrays.asList(times));
@@ -42,6 +52,17 @@ public class ServiceInfoActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, timeList);
         timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         timeSpinner.setAdapter(timeAdapter);
+        String time = Facade.getCurrentService().getTimeframe();
+        if (!time.equals("")) {
+            for (int i = 0; i < timeList.size(); i++) {
+                if (timeList.get(i).equals(time)) {
+                    timeSpinner.setSelection(i);
+                }
+            }
+        }
+
+        EditText editText = (EditText)findViewById(R.id.comment);
+        editText.setText(Facade.getCurrentService().getComment(), TextView.BufferType.EDITABLE);
 
         Button submit = (Button) findViewById(R.id.button);
         submit.setOnClickListener(new View.OnClickListener() {
