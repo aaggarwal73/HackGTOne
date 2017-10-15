@@ -29,19 +29,20 @@ public class ServicesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Facade.setCurrentService(new Service("", "", "", Facade.getCurrentUser()));
                 nextScreen();
             }
         });
 
         if (!Facade.getCurrentServiceCenter().getServices().isEmpty()) {
-            for (Service s : Facade.getCurrentServiceCenter().getServices()) {
+            for (final Service s : Facade.getCurrentServiceCenter().getServices()) {
                 Button myButton = new Button(this);
                 myButton.setText(String.format("%s -> %s", s.getTimeframe(), s.getItem()));
                 ll.addView(myButton, lp);
-                Facade.setCurrentService(s);
                 myButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Facade.setCurrentService(s);
                         nextScreen();
                     }
                 });
@@ -49,8 +50,6 @@ public class ServicesActivity extends AppCompatActivity {
         } else {
             Snackbar.make(ll, "No Service Requests! Add one with the + button.", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
-
-            Facade.setCurrentService(null);
         }
     }
 
