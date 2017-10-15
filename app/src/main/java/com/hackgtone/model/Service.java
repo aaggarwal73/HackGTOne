@@ -1,3 +1,5 @@
+package com.hackgtone.model;
+
 public class Service {
     private String timeframe;
     private String item;

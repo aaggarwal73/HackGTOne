@@ -1,3 +1,5 @@
+package com.hackgtone.model;
+
 import java.util.*;
 public abstract class ServiceCenter {
     private List<Service> services;
