@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.hackgtone.R;
+import com.hackgtone.model.Flight;
+import com.hackgtone.model.ServiceCenter;
+import com.hackgtone.model.SkyClub;
 
 public class ItineraryActvity extends AppCompatActivity {
 
@@ -19,10 +22,16 @@ public class ItineraryActvity extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        String[] stops = {"LAX", "FL1", "JFK", "FL2"}; //TODO: Change to leg objects
-        for (String stop: stops) {
+        for (ServiceCenter sc : Facade.getCurrentTrip().getServiceCenters()) {
             Button myButton = new Button(this);
-            myButton.setText(stop); //myButton.setText(trip.getName());
+            if (sc instanceof SkyClub) {
+                myButton.setText(String.format("SkyClub at %s", sc.getSrc()));
+            } else {
+                Flight f = (Flight) sc;
+                myButton.setText(String.format("Flight %d %s to %s at %s",
+                        f.getId(), f.getSrc(), f.getDst(), f.getDeparting()));
+            }
+
 
             ll.addView(myButton, lp);
             myButton.setOnClickListener(new View.OnClickListener() {

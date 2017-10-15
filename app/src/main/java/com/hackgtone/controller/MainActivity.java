@@ -8,9 +8,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.hackgtone.R;
+import com.hackgtone.model.Trip;
 
 public class MainActivity extends AppCompatActivity {
 
+    Facade facade = Facade.getInstance();
     private LinearLayout ll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +22,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        String[] trips = {"home", "first", "second"}; //TODO: Change to trip objects
-        for (String trip: trips) {
+        for (Trip trip: Facade.getCurrentUser().getTrips()) {
             Button myButton = new Button(this);
-            myButton.setText(trip); //myButton.setText(trip.getName());
+            myButton.setText(trip.getName());
             Facade.setCurrentTrip(trip);
             ll.addView(myButton, lp);
             myButton.setOnClickListener(new View.OnClickListener() {
