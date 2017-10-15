@@ -48,6 +48,9 @@ public abstract class ServiceCenter {
     public void setItems(List<String> items) {
         this.items = items;
     }
+    public void removeService(Service s) {
+        this.services.remove(s);
+    }
 
     public List<Service> getServices() {
         return this.services;

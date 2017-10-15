@@ -53,6 +53,16 @@ public class ServiceInfoActivity extends AppCompatActivity {
                 nextScreen();
             }
         });
+
+        Button delete = (Button) findViewById(R.id.button2);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Service s = Facade.getCurrentService();
+                Facade.getCurrentServiceCenter().removeService(s);
+                nextScreen();
+            }
+        });
     }
 
     public void nextScreen() {
