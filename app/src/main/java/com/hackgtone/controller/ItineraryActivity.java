@@ -1,3 +1,4 @@
+
 package com.hackgtone.controller;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.hackgtone.R;
+import com.hackgtone.model.Trip;
 import com.hackgtone.model.Flight;
 import com.hackgtone.model.ServiceCenter;
 import com.hackgtone.model.SkyClub;
@@ -26,6 +28,7 @@ public class ItineraryActivity extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+
         for (ServiceCenter sc : Facade.getCurrentTrip().getServiceCenters()) {
             Button myButton = new Button(this);
             if (sc instanceof SkyClub) {
@@ -42,6 +45,7 @@ public class ItineraryActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     nextScreen();
                 }
             });
