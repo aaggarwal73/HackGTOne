@@ -47,7 +47,7 @@ public class ServicesActivity extends AppCompatActivity {
                 });
             }
         } else {
-            Snackbar.make(ll, "No Services! Add one with the + button.", Snackbar.LENGTH_LONG)
+            Snackbar.make(ll, "No Service Requests! Add one with the + button.", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
 
             Facade.setCurrentService(null);
