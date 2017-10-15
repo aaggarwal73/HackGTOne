@@ -2,6 +2,8 @@ package com.hackgtone.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,6 +25,14 @@ public class ServicesActivity extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextScreen();
+            }
+        });
+
         if (!Facade.getCurrentServiceCenter().getServices().isEmpty()) {
             for (Service s : Facade.getCurrentServiceCenter().getServices()) {
                 Button myButton = new Button(this);
@@ -37,16 +47,10 @@ public class ServicesActivity extends AppCompatActivity {
                 });
             }
         } else {
-            Button myButton = new Button(this);
-            myButton.setText("No service requests! Click here to add.");
-            ll.addView(myButton, lp);
+            Snackbar.make(ll, "No Services! Add one with the + button.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+
             Facade.setCurrentService(null);
-            myButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    nextScreen();
-                }
-            });
         }
     }
 

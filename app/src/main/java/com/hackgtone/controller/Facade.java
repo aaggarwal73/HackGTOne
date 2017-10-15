@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Aman on 10/14/17.
  */
 
-class Facade {
+public class Facade {
 
     private static final Facade ourInstance = new Facade();
     private static Trip currentTrip;
@@ -24,13 +24,13 @@ class Facade {
     private static User currentUser;
     private Facade() {
         List<ServiceCenter> scList = new ArrayList<>(Arrays.asList(
+                new SkyClub(1, "ATL"),
                 new Flight(2456, "ATL", "JFK", "09:01"),
-                new Flight(8791, "JFK", "SEA", "12:02"),
-                new SkyClub(1, "ATL")));
+                new Flight(8791, "JFK", "SEA", "12:02")));
         List<ServiceCenter> scList2 = new ArrayList<>(Arrays.asList(
                 new Flight(3211, "DEN", "SFO", "06:13"),
-                new Flight(9100, "SFO", "DEN", "22:53"),
-                new SkyClub(2, "SFO")));
+                new SkyClub(2, "SFO"),
+                new Flight(9100, "SFO", "DEN", "22:53")));
         List<Trip> tripList = new ArrayList<>(Arrays.asList(
                 new Trip(scList, "ATL -> SEA"),
                 new Trip(scList2, "DEN -> SFO")));
