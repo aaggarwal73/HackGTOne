@@ -1,5 +1,6 @@
-package com.hackgtone.controller;
 
+package com.hackgtone.controller;
+import com.hackgtone.Activities.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,18 +12,19 @@ import com.hackgtone.R;
 import com.hackgtone.model.Trip;
 
 public class MainActivity extends AppCompatActivity {
+    Main singleton = Main.getInstance();
 
     Facade facade = Facade.getInstance();
     private LinearLayout ll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //create button dynamically
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        for (Trip trip: Facade.getCurrentUser().getTrips()) {
+        for (final Trip trip: Facade.getCurrentUser().getTrips()) {
             Button myButton = new Button(this);
             myButton.setText(trip.getName());
             Facade.setCurrentTrip(trip);
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    singleton.setCurrentTrip(trip);
                     nextScreen();
                 }
             });
