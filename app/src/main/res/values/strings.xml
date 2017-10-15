@@ -13,4 +13,5 @@
         completions."
     </string>
     <string name="title_activity_services_activty">ServicesActivty</string>
+    <string name="title_activity_service_info">ServiceInfoActivity</string>
 </resources>

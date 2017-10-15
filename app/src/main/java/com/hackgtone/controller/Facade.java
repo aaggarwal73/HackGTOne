@@ -19,6 +19,7 @@ class Facade {
 
     private static final Facade ourInstance = new Facade();
     private static Trip currentTrip;
+    private static ServiceCenter currentServiceCenter;
     private static Service currentService;
     private static User currentUser;
     private Facade() {
@@ -57,4 +58,14 @@ class Facade {
     public static void setCurrentService(Service currentService) {
         Facade.currentService = currentService;
     }
+
+    public static ServiceCenter getCurrentServiceCenter() {
+        return currentServiceCenter;
+    }
+
+    public static void setCurrentServiceCenter(ServiceCenter currentServiceCenter) {
+        Facade.currentServiceCenter = currentServiceCenter;
+    }
+
+
 }

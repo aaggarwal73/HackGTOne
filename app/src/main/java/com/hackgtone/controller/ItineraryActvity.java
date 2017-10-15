@@ -32,6 +32,7 @@ public class ItineraryActvity extends AppCompatActivity {
                         f.getId(), f.getSrc(), f.getDst(), f.getDeparting()));
             }
 
+            Facade.setCurrentServiceCenter(sc);
 
             ll.addView(myButton, lp);
             myButton.setOnClickListener(new View.OnClickListener() {

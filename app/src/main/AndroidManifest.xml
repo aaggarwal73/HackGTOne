@@ -29,6 +29,10 @@
         <activity
             android:name=".controller.ServicesActivity"
             android:label="@string/title_activity_services_activty"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.ServiceInfoActivity"
+            android:label="@string/title_activity_service_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
