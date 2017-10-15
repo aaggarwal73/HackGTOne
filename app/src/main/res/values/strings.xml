@@ -9,9 +9,10 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="title_activity_services_activty">ServicesActivty</string>
-    <string name="title_activity_service_info">ServiceInfoActivity</string>
+
+    <!-- Strings for titles -->
+    <string name="title_activity_main">My Trips</string>
+    <string name="title_activity_itinerary">My Itinerary</string>
+    <string name="title_activity_services">List of Service Requests</string>
+    <string name="title_activity_service_info">Update Service Request</string>
 </resources>
