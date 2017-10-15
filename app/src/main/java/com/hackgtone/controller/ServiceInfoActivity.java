@@ -1,7 +1,6 @@
 
 package com.hackgtone.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,8 +27,6 @@ public class ServiceInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_service_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         final Spinner itemSpinner = (Spinner) findViewById(R.id.item_spinner);
         List<String> itemList = new ArrayList<>(Facade.getCurrentServiceCenter().getItems());
@@ -61,16 +58,22 @@ public class ServiceInfoActivity extends AppCompatActivity {
             }
         }
 
-        EditText editText = (EditText)findViewById(R.id.comment);
-        editText.setText(Facade.getCurrentService().getComment(), TextView.BufferType.EDITABLE);
+        final EditText comment = (EditText)findViewById(R.id.comment);
+        comment.setText(Facade.getCurrentService().getComment(), TextView.BufferType.EDITABLE);
 
         Button submit = (Button) findViewById(R.id.button);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Service s = Facade.getCurrentService();
+                if (s.getItem().equals("")) {
+                    Facade.getCurrentServiceCenter().addService(s);
+                }
+
                 s.setItem(String.valueOf(itemSpinner.getSelectedItem()));
-                Facade.getCurrentServiceCenter().addService(s);
+                s.setTimeframe(String.valueOf(timeSpinner.getSelectedItem()));
+                s.setComment(comment.getText().toString());
+
                 nextScreen();
             }
         });
@@ -87,7 +90,6 @@ public class ServiceInfoActivity extends AppCompatActivity {
     }
 
     public void nextScreen() {
-        Intent goToNextActivity = new Intent(getApplicationContext(), ServicesActivity.class);
-        startActivity(goToNextActivity);
+        this.finish();
     }
 }
