@@ -20,21 +20,6 @@ class Main {
         return ourInstance;
     }
 
-
-//    public static void changeScreen(String viewFile) {
-//        try {
-//            String fileName = "../view/" + getFilePath(viewFile) + ".fxml";
-//
-//            Pane pane = FXMLLoader.load(Main.class.getResource(fileName));
-//            Scene changedScene = new Scene(pane);
-//            SessionInfo.getInstance().updateManagerStatus();
-//            SessionInfo.getInstance().setCurrentPage(viewFile);
-//            mainStage.setScene(changedScene);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     public static void setCurrentTrip(String trip) {
         currentTrip=trip;
     }
