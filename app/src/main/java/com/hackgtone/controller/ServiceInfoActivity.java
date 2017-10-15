@@ -1,6 +1,7 @@
 
 package com.hackgtone.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +20,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ServiceInfoActivity extends AppCompatActivity {
-    private final String[] items = {"Coke", "Breakfast A", "Lunch B", "Dinner C"};
     private final String[] times = {"6:00-6:15", "6:15-6:30", "6:30-6:45", "6:45-7:00", "8:15-8:30"};
 
     @Override
@@ -29,8 +29,10 @@ public class ServiceInfoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         final Spinner itemSpinner = (Spinner) findViewById(R.id.item_spinner);
-        List<String> itemList = new ArrayList<>(Arrays.asList(items));
+        List<String> itemList = new ArrayList<>(Facade.getCurrentServiceCenter().getItems());
         final ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, itemList);
         itemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,7 +71,13 @@ public class ServiceInfoActivity extends AppCompatActivity {
                 Service s = Facade.getCurrentService();
                 s.setItem(String.valueOf(itemSpinner.getSelectedItem()));
                 Facade.getCurrentServiceCenter().addService(s);
+                nextScreen();
             }
         });
+    }
+
+    public void nextScreen() {
+        Intent goToNextActivity = new Intent(getApplicationContext(), ServicesActivity.class);
+        startActivity(goToNextActivity);
     }
 }
