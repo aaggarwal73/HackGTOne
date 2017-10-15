@@ -36,6 +36,7 @@ public class Facade {
                 new Trip(scList2, "DEN -> SFO")));
         currentUser = new User("Cole", tripList);
         scList.get(0).addService(new Service("8:15-8:30", "Breakfast A", "With orange juice", currentUser));
+        scList.get(0).setItems(Arrays.asList("Cookies","Coke","Breakfast A", "Breakfast B","Blanket"));
     }
     static Facade getInstance() {
         return ourInstance;
