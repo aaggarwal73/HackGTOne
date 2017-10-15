@@ -1,4 +1,4 @@
-package com.hackgtone;
+package com.hackgtone.controller;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,6 +17,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.hackgtone.R;
 
 /**
  * A login screen that offers login via email/password.
@@ -117,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
             if ((email + ":" + "password").equals(DUMMY_CREDENTIALS[0])) {
-                Intent goToNextActivity = new Intent(getApplicationContext(), com.hackgtone.MainActivity.class);
+                Intent goToNextActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(goToNextActivity);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

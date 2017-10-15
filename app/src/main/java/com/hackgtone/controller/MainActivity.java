@@ -1,11 +1,13 @@
-package com.hackgtone;
+package com.hackgtone.controller;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.hackgtone.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         for (String trip: trips) {
             Button myButton = new Button(this);
             myButton.setText(trip); //myButton.setText(trip.getName());
-            Main.setCurrentTrip(trip);
+            Facade.setCurrentTrip(trip);
             ll.addView(myButton, lp);
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override

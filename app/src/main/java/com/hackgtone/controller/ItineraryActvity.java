@@ -1,12 +1,13 @@
-package com.hackgtone;
+package com.hackgtone.controller;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.hackgtone.R;
 
 public class ItineraryActvity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class ItineraryActvity extends AppCompatActivity {
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        String[] stops = {"LAX", "FL1", "JFK","FL2"}; //TODO: Change to leg objects
+        String[] stops = {"LAX", "FL1", "JFK", "FL2"}; //TODO: Change to leg objects
         for (String stop: stops) {
             Button myButton = new Button(this);
             myButton.setText(stop); //myButton.setText(trip.getName());
@@ -34,7 +35,7 @@ public class ItineraryActvity extends AppCompatActivity {
 
     }
     public void nextScreen() {
-        Intent goToNextActivity = new Intent(getApplicationContext(), ServicesActivty.class);
+        Intent goToNextActivity = new Intent(getApplicationContext(), ServicesActivity.class);
         startActivity(goToNextActivity);
     }
 

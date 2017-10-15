@@ -1,4 +1,4 @@
-package com.hackgtone;
+package com.hackgtone.controller;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class ServicesActivty extends AppCompatActivity {
+import com.hackgtone.R;
+
+public class ServicesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
