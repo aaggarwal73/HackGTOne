@@ -1,4 +1,5 @@
-package com.hackgtone.Activities;
+
+package com.hackgtone.controller;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +10,13 @@ import android.view.View;
 
 import com.hackgtone.R;
 
-public class ServicesActivty extends AppCompatActivity {
+
+public class ServiceInfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services);
+        setContentView(R.layout.activity_service_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

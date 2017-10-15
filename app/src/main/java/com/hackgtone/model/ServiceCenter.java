@@ -8,7 +8,7 @@ public abstract class ServiceCenter {
     public ServiceCenter(int id, String src) {
         this.id = id;
         this.src = src;
-        this.services = new ArrayList<Service>();
+        this.services = new ArrayList<>();
     } 
     public ServiceCenter(int id, String src, List<Service> services) {
         this.id = id;

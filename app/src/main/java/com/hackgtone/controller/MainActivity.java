@@ -1,8 +1,9 @@
-package com.hackgtone.Activities;
 
+package com.hackgtone.controller;
+import com.hackgtone.Activities.*;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,34 +11,36 @@ import android.widget.LinearLayout;
 import com.hackgtone.R;
 import com.hackgtone.model.Trip;
 
-public class ItineraryActvity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
+    Main singleton = Main.getInstance();
 
+    Facade facade = Facade.getInstance();
+    private LinearLayout ll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_itinerary);
-        //set number of buttons here.
+        setContentView(R.layout.activity_main);
+        //create button dynamically
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        Trip[] trips = Main.getTrips();
-        for (Trip trip: trips) {
+        for (final Trip trip: Facade.getCurrentUser().getTrips()) {
             Button myButton = new Button(this);
             myButton.setText(trip.getName());
+            Facade.setCurrentTrip(trip);
             ll.addView(myButton, lp);
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    singleton.setCurrentTrip(trip);
                     nextScreen();
                 }
             });
         }
-
     }
+
     public void nextScreen() {
-        Intent goToNextActivity = new Intent(getApplicationContext(), ServicesActivty.class);
+        Intent goToNextActivity = new Intent(getApplicationContext(), ItineraryActvity.class);
         startActivity(goToNextActivity);
     }
-
 }

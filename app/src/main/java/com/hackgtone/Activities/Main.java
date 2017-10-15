@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Created by Aman on 10/14/17.
  */
 
-class Main {
+public class Main {
 
     private static final Main ourInstance = new Main();
     private static Trip currentTrip; //change to type Trip later
@@ -52,7 +52,7 @@ class Main {
     private static Trip[] trips = {new Trip(Arrays.asList(trip1), "Home"), new Trip(Arrays.asList(trip2), "Trip2")};
     private Main() {
     }
-    static Main getInstance() {
+    public static Main getInstance() {
         return ourInstance;
     }
 
