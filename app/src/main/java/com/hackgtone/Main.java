@@ -10,6 +10,8 @@ class Main {
     static Main getInstance() {
         return ourInstance;
     }
+    private static String currentTrip; //change to type Trip later
+    private static String chosenLeg; //change to type Itinerary later
 
 //    public static void changeScreen(String viewFile) {
 //        try {
@@ -25,6 +27,12 @@ class Main {
 //        }
 //    }
 
+    public static void setCurrentTrip(String trip) {
+        currentTrip=trip;
+    }
+    public static String getCurrentTrip() {
+        return currentTrip;
+    }
     private Main() {
     }
 }

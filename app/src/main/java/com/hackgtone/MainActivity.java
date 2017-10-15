@@ -15,18 +15,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //create button dynamically
-        Button myButton = new Button(this);
-        myButton.setText("Push Me");
-
-        ll = (LinearLayout)findViewById(R.id.buttonlayout);
+        LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        ll.addView(myButton, lp);
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextScreen();
-            }
-        });
+
+        String[] trips = {"home", "first", "second"}; //TODO: Change to trip objects
+        for (String trip: trips) {
+            Button myButton = new Button(this);
+            myButton.setText(trip); //myButton.setText(trip.getName());
+            Main.setCurrentTrip(trip);
+            ll.addView(myButton, lp);
+            myButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nextScreen();
+                }
+            });
+        }
     }
 
     public void nextScreen() {

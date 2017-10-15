@@ -15,18 +15,23 @@ public class ItineraryActvity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itinerary);
         //set number of buttons here.
-        Button myButton = new Button(this);
-        myButton.setText("Push Me");
-
         LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        ll.addView(myButton, lp);
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextScreen();
-            }
-        });
+
+        String[] stops = {"LAX", "FL1", "JFK","FL2"}; //TODO: Change to leg objects
+        for (String stop: stops) {
+            Button myButton = new Button(this);
+            myButton.setText(stop); //myButton.setText(trip.getName());
+
+            ll.addView(myButton, lp);
+            myButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nextScreen();
+                }
+            });
+        }
+
     }
     public void nextScreen() {
         Intent goToNextActivity = new Intent(getApplicationContext(), ServicesActivty.class);
