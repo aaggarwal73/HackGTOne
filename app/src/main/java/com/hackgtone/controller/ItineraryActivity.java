@@ -29,7 +29,7 @@ public class ItineraryActivity extends AppCompatActivity {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
-        for (ServiceCenter sc : Facade.getCurrentTrip().getServiceCenters()) {
+        for (final ServiceCenter sc : Facade.getCurrentTrip().getServiceCenters()) {
             Button myButton = new Button(this);
             if (sc instanceof SkyClub) {
                 myButton.setText(String.format("SkyClub at %s", sc.getSrc()));
@@ -45,7 +45,7 @@ public class ItineraryActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Facade.setCurrentServiceCenter(sc);
                     nextScreen();
                 }
             });

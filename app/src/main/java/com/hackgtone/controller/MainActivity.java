@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    singleton.setCurrentTrip(trip);
+                    Facade.setCurrentTrip(trip);
                     nextScreen();
                 }
             });
