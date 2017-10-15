@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.hackgtone.R;
+import com.hackgtone.model.Flight;
 import com.hackgtone.model.Service;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class ServiceInfoActivity extends AppCompatActivity {
     private final String[] times = {"6:00-6:15", "6:15-6:30", "6:30-6:45", "6:45-7:00", "8:15-8:30"};
+    private final String[] flightTimes = {"Halfway"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,6 @@ public class ServiceInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_service_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         final Spinner itemSpinner = (Spinner) findViewById(R.id.item_spinner);
         List<String> itemList = new ArrayList<>(Facade.getCurrentServiceCenter().getItems());
@@ -48,6 +48,10 @@ public class ServiceInfoActivity extends AppCompatActivity {
 
         final Spinner timeSpinner = (Spinner) findViewById(R.id.time_spinner);
         List<String> timeList = new ArrayList<>(Arrays.asList(times));
+        if(Facade.getCurrentServiceCenter() instanceof Flight) {
+            timeList.addAll(Arrays.asList(flightTimes));
+        }
+
         final ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, timeList);
         timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

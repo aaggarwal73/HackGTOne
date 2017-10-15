@@ -1,6 +1,5 @@
 
 package com.hackgtone.controller;
-import com.hackgtone.Activities.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import com.hackgtone.R;
 import com.hackgtone.model.Trip;
 
 public class MainActivity extends AppCompatActivity {
-    Main singleton = Main.getInstance();
 
     Facade facade = Facade.getInstance();
     private LinearLayout ll;

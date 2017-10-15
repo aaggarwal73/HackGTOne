@@ -25,18 +25,20 @@ public class Facade {
     private Facade() {
         List<ServiceCenter> scList = new ArrayList<>(Arrays.asList(
                 new SkyClub(1, "ATL"),
-                new Flight(2456, "ATL", "JFK", "09:01"),
-                new Flight(8791, "JFK", "SEA", "12:02")));
+                new Flight(2456, "ATL", "JFK", "09:01", "13:00"),
+                new Flight(8791, "JFK", "SEA", "13:02", "18:34")));
         List<ServiceCenter> scList2 = new ArrayList<>(Arrays.asList(
-                new Flight(3211, "DEN", "SFO", "06:13"),
+                new Flight(3211, "DEN", "SFO", "06:13", "9:17"),
                 new SkyClub(2, "SFO"),
-                new Flight(9100, "SFO", "DEN", "22:53")));
+                new Flight(9100, "SFO", "DEN", "22:53", "23:20")));
         List<Trip> tripList = new ArrayList<>(Arrays.asList(
                 new Trip(scList, "ATL -> SEA"),
                 new Trip(scList2, "DEN -> SFO")));
         currentUser = new User("Cole", tripList);
         scList.get(0).addService(new Service("8:15-8:30", "Breakfast A", "With orange juice", currentUser));
         scList.get(0).setItems(Arrays.asList("Cookies","Coke","Breakfast A", "Breakfast B","Blanket"));
+        scList.get(1).setItems(Arrays.asList("Peanuts","Coke","Breakfast A", "Breakfast B","Blanket"));
+        scList.get(2).setItems(Arrays.asList("Cookies","Coke","Breakfast A", "Breakfast B","Blanket"));
     }
     static Facade getInstance() {
         return ourInstance;
