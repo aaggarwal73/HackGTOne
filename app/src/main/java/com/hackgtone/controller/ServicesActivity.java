@@ -22,9 +22,6 @@ public class ServicesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +30,18 @@ public class ServicesActivity extends AppCompatActivity {
                 nextScreen();
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        if (ll.getChildCount() > 0) {
+            ll.removeAllViews();
+        }
         if (!Facade.getCurrentServiceCenter().getServices().isEmpty()) {
             for (final Service s : Facade.getCurrentServiceCenter().getServices()) {
                 Button myButton = new Button(this);
