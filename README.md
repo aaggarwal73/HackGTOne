@@ -1,3 +1,6 @@
+## About Us
+This project was a submission for HackGT 2017 and won the prize for Best Travel Solution, sponsored by Delta. Here is our [Devpost Submission](https://devpost.com/software/hackgtone). 
+
 ## Inspiration
 We wanted to improve the customer experience related to in-flight amenities, while allowing airlines to more effectively and efficiently customize their supplies for a certain flight. On the customer-facing side, high-paying customers would find huge value in being able to request and schedule amenities beforehand. For example, a customer could get on the plane and already find their favorite drink waiting, or on long flights, dictate when their meals would come, so they could effectively plan a sleep schedule. On the business-facing side, this data would allow the airline to create a better prediction model on what needs to be stocked for a particular flight.
 
@@ -28,6 +31,3 @@ Currently, this app is meant only to be a feature for First Class and above (Del
 
 Finally, in terms of technology, we built the current app on Android as a proof of concept but also plan to port it to iOS, and it would be ideal to also have it integrated in the website. 
 
-## More Information
-Here is our [Devpost Submission](https://devpost.com/software/hackgtone).
-This project won Delta's Best Travel Solution Award.
